@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http.Features;
-using Microsoft.EntityFrameworkCore;
-using OracaoApp.Data;
 using System.Reflection;
 
 namespace OracaoApp.API.Extensions;

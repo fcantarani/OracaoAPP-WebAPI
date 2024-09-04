@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk">
-	<PropertyGroup Label="Globals">
-		<ProjectVersion>2.1</ProjectVersion>
-		<DockerTargetOS>Linux</DockerTargetOS>
-		<DockerPublishLocally>False</DockerPublishLocally>
-		<ProjectGuid>73d4c500-01b0-4000-92df-2d6c6667dcb6</ProjectGuid>
-		<DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-		<DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-		<DockerServiceName>oracaoapp-api</DockerServiceName>
-		<DockerComposeProjectName>oracao-app</DockerComposeProjectName>
-	</PropertyGroup>
-	<ItemGroup>
-		<None Include="assets\initdb\initdb.sql" />
-		<None Include="docker-compose.override.yml">
-			<DependentUpon>docker-compose.yml</DependentUpon>
-		</None>
-		<None Include="docker-compose.yml" />
-		<None Include=".dockerignore" />
-	</ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectVersion>2.1</ProjectVersion>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <DockerPublishLocally>False</DockerPublishLocally>
+    <ProjectGuid>73d4c500-01b0-4000-92df-2d6c6667dcb6</ProjectGuid>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
+    <DockerServiceName>oracaoapp-api</DockerServiceName>
+    <DockerComposeProjectName>oracao-app</DockerComposeProjectName>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="assets\initdb\initdb.sql" />
+    <None Include="assets\keycloak\realm-export.json" />
+    <None Include="docker-compose.override.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.yml" />
+    <None Include=".dockerignore" />
+  </ItemGroup>
 </Project>

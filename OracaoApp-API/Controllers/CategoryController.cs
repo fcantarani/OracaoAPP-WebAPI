@@ -1,96 +1,81 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using OracaoApp.Data;
-using OracaoApp.Data.DbModels;
 
 namespace OracaoApp.API.Controllers;
 
 [Route("v1/[controller]")]
 [ApiController]
-public class CategoryController : ControllerBase
+public class CategoryController(ApplicationDbContext context) : ControllerBase
 {
-    private readonly ApplicationDbContext _context;
-
-    public CategoryController(ApplicationDbContext context)
-    {
-        _context = context;
-    }
-
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
     {
-        return await _context.Categories.ToListAsync();
+        return await context.Categories.ToListAsync();
     }
 
 
     [HttpGet("Category/{id}")]
     public async Task<ActionResult<Category>> GetCategory(int id)
     {
-        var category = await _context.Categories.FindAsync(id);
+        var category = await context.Categories.FindAsync(id);
 
         if (category == null)
-        {
             return NotFound();
-        }
 
         return category;
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutCategory(int id, Category category)
+    public async Task<IActionResult> PutCategory(int id, CategoryUpdateRequest model)
     {
-        if (id != category.Id)
-        {
-            return BadRequest();
-        }
+        var category = context.Categories.Find(id);
 
-        _context.Entry(category).State = EntityState.Modified;
+        if (category == null)
+            return NotFound();
 
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!CategoryExists(id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
-        }
+        category.Name = model.Name;
+        category.HexColor = model.HexColor;
+        category.UpdatedDate = DateTime.Now;
+
+        context.Update(category);
+        await context.SaveChangesAsync();
 
         return NoContent();
     }
 
     [HttpPost]
-    public async Task<ActionResult<Category>> PostCategory(Category category)
+    public async Task<ActionResult<Category>> PostCategory(CategoryCreateRequest model)
     {
-        _context.Categories.Add(category);
-        await _context.SaveChangesAsync();
+        var newCategory = new Category
+        {
+            Name = model.Name,
+            HexColor = model.HexColor,
+            CreatedDate = DateTime.Now,
+            UpdatedDate = DateTime.Now
+        };
 
-        return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+        context.Categories.Add(newCategory);
+        await context.SaveChangesAsync();
+
+        return CreatedAtAction("GetCategory", new { id = newCategory.Id }, newCategory);
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCategory(int id)
     {
-        var category = await _context.Categories.FindAsync(id);
+        var category = await context.Categories.FindAsync(id);
         if (category == null)
         {
             return NotFound();
         }
 
-        _context.Categories.Remove(category);
-        await _context.SaveChangesAsync();
+        context.Categories.Remove(category);
+        await context.SaveChangesAsync();
 
         return NoContent();
     }
 
     private bool CategoryExists(int id)
     {
-        return _context.Categories.Any(e => e.Id == id);
+        return context.Categories.Any(e => e.Id == id);
     }
 }

@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OracaoApp.Data.DbModels;
 
-namespace OracaoApp.Data
+namespace OracaoApp.Data;
+
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
-    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
-    {
-        public DbSet<Category> Categories { get; set; }
+    public DbSet<Prayer> Prayers { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Testimony> Testimonies { get; set; }
 
-
-    }
 }

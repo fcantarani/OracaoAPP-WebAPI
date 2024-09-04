@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\OracaoApp.Utils\OracaoApp.Utils.csproj" />
     <ProjectReference Include="..\OracaoApp-Data\OracaoApp.Data.csproj" />
   </ItemGroup>

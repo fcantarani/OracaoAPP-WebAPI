@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using OracaoApp.Data;
-
-namespace OracaoApp.API.Extensions;
+﻿namespace OracaoApp.API.Extensions;
 
 public static class WebApplicationExtensions
 {

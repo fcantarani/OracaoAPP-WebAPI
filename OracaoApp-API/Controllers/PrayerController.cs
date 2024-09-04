@@ -1,0 +1,85 @@
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace OracaoApp.API.Controllers;
+
+[Route("v1/[controller]")]
+[ApiController]
+public class PrayerController(ApplicationDbContext context) : ControllerBase
+{
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Prayer>>> GetPrayers()
+    {
+        return await context.Prayers.ToListAsync();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Prayer>> GetPrayer(int id)
+    {
+        var prayer = await context.Prayers.FindAsync(id);
+
+        if (prayer == null)
+        {
+            return NotFound();
+        }
+
+        return prayer;
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutPrayer(int id, PrayerCreateRequest model)
+    {
+        var prayer = context.Prayers.Find(id);
+
+        if (prayer == null)
+            return NotFound();
+
+        prayer.Title = model.Title;
+        prayer.Description = model.Description;
+        prayer.PrayingForName = model.PrayingForName;
+        prayer.CategoryId = model.CategoryId;
+        prayer.UpdatedDate = DateTime.Now;
+
+        context.Update(prayer);
+        await context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<Prayer>> PostPrayer(PrayerCreateRequest model)
+    {
+        var prayer = new Prayer
+        {
+            Title = model.Title,
+            Description = model.Description,
+            PrayingForName = model.PrayingForName,
+            CategoryId = model.CategoryId,
+            CreatedDate = DateTime.Now,
+            UpdatedDate = DateTime.Now
+        };
+
+        context.Prayers.Add(prayer);
+        await context.SaveChangesAsync();
+
+        return CreatedAtAction("GetPrayer", new { id = prayer.Id }, prayer);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePrayer(int id)
+    {
+        var prayer = await context.Prayers.FindAsync(id);
+        if (prayer == null)
+            return NotFound();
+
+        context.Prayers.Remove(prayer);
+        await context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    private bool PrayerExists(int id)
+    {
+        return context.Prayers.Any(e => e.Id == id);
+    }
+}

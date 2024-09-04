@@ -69,7 +69,6 @@ services:
       labels:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: OracaoApp.API
-      target: base
     container_name: OracaoApp.API
     entrypoint:
       - dotnet
@@ -80,12 +79,10 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_HTTP_PORTS: "8080"
-      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
-      DOTNET_USE_POLLING_FILE_WATCHER: "1"
-      NUGET_FALLBACK_PACKAGES: ""
-    image: oracaoappapi:dev
+    image: oracaoappapi
     labels:
-      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages  "/app/bin/Debug/net8.0/OracaoApp.API.dll"'
+      com.microsoft.visual-studio.project-name: OracaoApp.API
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages  "/app/OracaoApp.API.dll"'
       com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
@@ -94,28 +91,13 @@ services:
     ports:
       - mode: ingress
         target: 8080
+        published: "5001"
         protocol: tcp
     tty: true
     volumes:
       - type: bind
-        source: D:\Developments\Applications\OracaoApp\OracaoApp.WebAPI\OracaoApp-API
-        target: /app
-        bind:
-          create_host_path: true
-      - type: bind
-        source: D:\Developments\Applications\OracaoApp\OracaoApp.WebAPI
-        target: /src
-        bind:
-          create_host_path: true
-      - type: bind
         source: C:\Users\Fabio\vsdbg\vs2017u5
         target: /remote_debugger
-        bind:
-          create_host_path: true
-      - type: bind
-        source: C:\Users\Fabio\.nuget\packages
-        target: /.nuget/packages
-        read_only: true
         bind:
           create_host_path: true
       - type: bind
