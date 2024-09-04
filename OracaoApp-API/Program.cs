@@ -6,9 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 builder.AddCustomServices();
-
 var app = builder.Build();
-
 app.UseCustomServices();
 
 app.Run();
