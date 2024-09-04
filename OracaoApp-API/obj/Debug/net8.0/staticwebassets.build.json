@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "YwLAxmMEEYHU9esE/txKydXiJpkaukDASHQNAV5opyE=",
-  "Source": "OracaoApp-API",
-  "BasePath": "_content/OracaoApp-API",
+  "Hash": "75HFFgDWtdIK5MdHJO4hY/uri7AmpYNSzksgER0Fixc=",
+  "Source": "OracaoApp.API",
+  "BasePath": "_content/OracaoApp.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

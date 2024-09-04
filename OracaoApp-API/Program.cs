@@ -1,4 +1,4 @@
-using OracaoApp_API.Extensions;
+using OracaoApp.API.Extensions;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);

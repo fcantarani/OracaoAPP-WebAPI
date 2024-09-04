@@ -1,6 +1,6 @@
 ﻿using Microsoft.IdentityModel.Protocols.Configuration;
 
-namespace OracaoApp_API.Extensions
+namespace OracaoApp.API.Extensions
 {
     public static class ConfigurationExtensions
     {

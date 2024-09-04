@@ -1,4 +1,4 @@
-namespace OracaoApp_API
+namespace OracaoApp.API
 {
     public class WeatherForecast
     {

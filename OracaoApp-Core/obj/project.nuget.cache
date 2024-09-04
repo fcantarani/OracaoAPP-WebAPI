@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7zK45wVbPzw=",
+  "dgSpecHash": "36T1DGat8Qs=",
   "success": true,
-  "projectFilePath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp-WebAPI\\OracaoApp-Core\\OracaoApp-Core.csproj",
+  "projectFilePath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.WebAPI\\OracaoApp-Core\\OracaoApp.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracaoApp-API", "OracaoApp-API\OracaoApp-API.csproj", "{3CBB070E-1FD8-4CC4-9396-5B4B9CEEEC95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OracaoApp.API", "OracaoApp-API\OracaoApp.API.csproj", "{3CBB070E-1FD8-4CC4-9396-5B4B9CEEEC95}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{73D4C500-01B0-4000-92DF-2D6C6667DCB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracaoApp-Data", "OracaoApp-Data\OracaoApp-Data.csproj", "{41B40C56-C313-4361-AC72-790E9835E73F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OracaoApp.Data", "OracaoApp-Data\OracaoApp.Data.csproj", "{41B40C56-C313-4361-AC72-790E9835E73F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracaoApp-Core", "OracaoApp-Core\OracaoApp-Core.csproj", "{AE7D3F89-FA0E-47EA-81B9-0F5C5803EF68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OracaoApp.Core", "OracaoApp-Core\OracaoApp.Core.csproj", "{AE7D3F89-FA0E-47EA-81B9-0F5C5803EF68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

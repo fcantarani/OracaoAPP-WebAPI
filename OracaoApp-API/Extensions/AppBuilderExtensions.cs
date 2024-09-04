@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
-using OracaoApp_Data;
+using OracaoApp.Data;
 using System.Reflection;
 
-namespace OracaoApp_API.Extensions;
+namespace OracaoApp.API.Extensions;
 
 public static class AppBuilderExtensions
 {

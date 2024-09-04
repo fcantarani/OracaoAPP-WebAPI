@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace OracaoApp_API.Controllers
+namespace OracaoApp.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

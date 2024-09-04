@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OracaoApp-Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8f7cf4b0210ea55ca23c76c53c21e2eb106aa20")]
 [assembly: System.Reflection.AssemblyProductAttribute("OracaoApp-Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OracaoApp-Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

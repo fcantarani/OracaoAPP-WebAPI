@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace OracaoApp_Data.Migrations
+namespace OracaoApp.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

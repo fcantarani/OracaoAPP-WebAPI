@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ETFnW5OxIZI=",
+  "dgSpecHash": "gU0gj4/QRYA=",
   "success": true,
-  "projectFilePath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp-WebAPI\\OracaoApp-Data\\OracaoApp-Data.csproj",
+  "projectFilePath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.WebAPI\\OracaoApp-Data\\OracaoApp.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Fabio\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.8\\microsoft.entityframeworkcore.8.0.8.nupkg.sha512",
     "C:\\Users\\Fabio\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.8\\microsoft.entityframeworkcore.abstractions.8.0.8.nupkg.sha512",

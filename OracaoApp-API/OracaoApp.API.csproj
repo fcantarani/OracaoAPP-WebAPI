@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>OracaoApp_API</RootNamespace>
+    <RootNamespace>OracaoApp.API</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OracaoApp-Data\OracaoApp-Data.csproj" />
+    <ProjectReference Include="..\OracaoApp-Data\OracaoApp.Data.csproj" />
   </ItemGroup>
 
 </Project>

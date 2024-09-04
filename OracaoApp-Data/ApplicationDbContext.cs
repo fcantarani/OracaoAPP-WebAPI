@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OracaoApp_Data.DbModels;
+using OracaoApp.Data.DbModels;
 
-namespace OracaoApp_Data
+namespace OracaoApp.Data
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
     {

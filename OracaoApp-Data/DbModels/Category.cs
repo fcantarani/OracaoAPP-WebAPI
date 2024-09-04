@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OracaoApp_Data.DbModels;
+namespace OracaoApp.Data.DbModels;
 
 public class Category
 {

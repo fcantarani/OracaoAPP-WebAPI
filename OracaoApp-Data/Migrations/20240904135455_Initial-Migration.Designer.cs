@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using OracaoApp_Data;
+using OracaoApp.Data;
 
 #nullable disable
 
-namespace OracaoApp_Data.Migrations
+namespace OracaoApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240904135455_Initial-Migration")]
@@ -25,7 +25,7 @@ namespace OracaoApp_Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("OracaoApp_Data.DbModels.Category", b =>
+            modelBuilder.Entity("OracaoApp.Data.DbModels.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

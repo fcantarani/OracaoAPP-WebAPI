@@ -721,11 +721,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp-WebAPI\\OracaoApp-Data\\OracaoApp-Data.csproj",
-      "projectName": "OracaoApp-Data",
-      "projectPath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp-WebAPI\\OracaoApp-Data\\OracaoApp-Data.csproj",
+      "projectUniqueName": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.WebAPI\\OracaoApp-Data\\OracaoApp.Data.csproj",
+      "projectName": "OracaoApp.Data",
+      "projectPath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.WebAPI\\OracaoApp-Data\\OracaoApp.Data.csproj",
       "packagesPath": "C:\\Users\\Fabio\\.nuget\\packages\\",
-      "outputPath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp-WebAPI\\OracaoApp-Data\\obj\\",
+      "outputPath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.WebAPI\\OracaoApp-Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Fabio\\AppData\\Roaming\\NuGet\\NuGet.Config",
