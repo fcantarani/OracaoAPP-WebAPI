@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+
+    database:
+        container_name: database
+        image: postgres:15.5
+        environment:
+          POSTGRES_PASSWORD: admrss
+          POSTGRES_DB: pray_db
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+          PGDATA: /var/lib/postgresql/data
+        volumes:
+        - pray_db:/var/lib/postgresql/data:rw
+        - ./assets/initdb:/docker-entrypoint-initdb.d
+        ports:
+        - "5432:5432"
+ 
+    keycloak:
+        container_name: keycloak
+        image: quay.io/keycloak/keycloak:25.0.2
+        environment:
+        - KEYCLOAK_ADMIN=admin
+        - KEYCLOAK_ADMIN_PASSWORD=admin
+        - KC_DB=postgres
+        - KC_DB_URL=jdbc:postgresql://database/keycloak
+        - KC_DB_USERNAME=postgres
+        - KC_DB_PASSWORD=admrss
+        - KC_PROXY=edge
+        command: ["start-dev", "--health-enabled=true", "--import-realm", "--log-level=INFO"]
+        volumes:
+        -  ./assets/keycloak:/opt/keycloak/data/import:rw
+        ports:
+        - 8080:8080
+        depends_on:
+        - database 
+
+    oracaoapp-api:
+        image: ${DOCKER_REGISTRY-}oracaoappapi
+        build:
+          context: .
+          dockerfile: OracaoApp-API/Dockerfile
+
+volumes:
+    pray_db:

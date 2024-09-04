@@ -1,0 +1,11 @@
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\bin\Debug\net8.0\OracaoApp-Core.deps.json
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\bin\Debug\net8.0\OracaoApp-Core.dll
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\bin\Debug\net8.0\OracaoApp-Core.pdb
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\obj\Debug\net8.0\OracaoApp-Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\obj\Debug\net8.0\OracaoApp-Core.AssemblyInfoInputs.cache
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\obj\Debug\net8.0\OracaoApp-Core.AssemblyInfo.cs
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\obj\Debug\net8.0\OracaoApp-Core.csproj.CoreCompileInputs.cache
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\obj\Debug\net8.0\OracaoApp-Core.dll
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\obj\Debug\net8.0\refint\OracaoApp-Core.dll
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\obj\Debug\net8.0\OracaoApp-Core.pdb
+D:\Developments\Applications\OracaoApp\OracaoApp-WebAPI\OracaoApp-Core\obj\Debug\net8.0\ref\OracaoApp-Core.dll

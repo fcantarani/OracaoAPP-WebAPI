@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "YwLAxmMEEYHU9esE/txKydXiJpkaukDASHQNAV5opyE=",
+  "Source": "OracaoApp-API",
+  "BasePath": "_content/OracaoApp-API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
