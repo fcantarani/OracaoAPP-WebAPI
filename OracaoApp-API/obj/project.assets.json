@@ -7238,8 +7238,8 @@
     },
     "OracaoApp.Utils/1.0.0": {
       "type": "project",
-      "path": "../../OracaoApp.Utils/OracaoApp.Utils.csproj",
-      "msbuildProject": "../../OracaoApp.Utils/OracaoApp.Utils.csproj"
+      "path": "../OracaoApp.Utils/OracaoApp.Utils.csproj",
+      "msbuildProject": "../OracaoApp.Utils/OracaoApp.Utils.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7283,11 +7283,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.Utils\\OracaoApp.Utils.csproj": {
-              "projectPath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.Utils\\OracaoApp.Utils.csproj"
-            },
             "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.WebAPI\\OracaoApp-Data\\OracaoApp.Data.csproj": {
               "projectPath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.WebAPI\\OracaoApp-Data\\OracaoApp.Data.csproj"
+            },
+            "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.WebAPI\\OracaoApp.Utils\\OracaoApp.Utils.csproj": {
+              "projectPath": "D:\\Developments\\Applications\\OracaoApp\\OracaoApp.WebAPI\\OracaoApp.Utils\\OracaoApp.Utils.csproj"
             }
           }
         }

@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\OracaoApp.Utils\OracaoApp.Utils.csproj" />
     <ProjectReference Include="..\OracaoApp-Data\OracaoApp.Data.csproj" />
+    <ProjectReference Include="..\OracaoApp.Utils\OracaoApp.Utils.csproj" />
   </ItemGroup>
 
 </Project>

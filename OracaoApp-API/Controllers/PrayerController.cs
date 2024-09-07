@@ -10,7 +10,8 @@ public class PrayerController(ApplicationDbContext context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Prayer>>> GetPrayers()
     {
-        return await context.Prayers.ToListAsync();
+        var prayers = await context.Prayers.Include(x => x.PrayerCategory).Include(x => x.PrayerComments).ToListAsync();
+        return prayers;
     }
 
     [HttpGet("{id}")]
@@ -37,7 +38,8 @@ public class PrayerController(ApplicationDbContext context) : ControllerBase
         prayer.Title = model.Title;
         prayer.Description = model.Description;
         prayer.PrayingForName = model.PrayingForName;
-        prayer.CategoryId = model.CategoryId;
+        prayer.IsPublic = model.IsPublic;
+        prayer.PrayerCategoryId = model.PrayerCategoryId;
         prayer.UpdatedDate = DateTime.Now;
 
         context.Update(prayer);
@@ -49,12 +51,15 @@ public class PrayerController(ApplicationDbContext context) : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Prayer>> PostPrayer(PrayerCreateRequest model)
     {
+
         var prayer = new Prayer
         {
             Title = model.Title,
             Description = model.Description,
             PrayingForName = model.PrayingForName,
-            CategoryId = model.CategoryId,
+            IsPublic = model.IsPublic,
+            Owner = "Fabio C",
+            PrayerCategoryId = model.PrayerCategoryId,
             CreatedDate = DateTime.Now,
             UpdatedDate = DateTime.Now
         };

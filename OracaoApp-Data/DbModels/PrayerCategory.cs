@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 
 namespace OracaoApp.Data.DbModels;
 
-public class Category
+public class PrayerCategory
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,8 +12,5 @@ public class Category
     public required string HexColor { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
-
-    [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-    public virtual Prayer? Prayer { get; set; }
 
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.Features;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace OracaoApp.API.Extensions;
 

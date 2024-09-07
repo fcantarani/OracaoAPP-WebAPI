@@ -50,6 +50,7 @@ public class TestimonyController(ApplicationDbContext context) : ControllerBase
         {
             Title = model.Title,
             Description = model.Description,
+            Owner = "Fabio C.",
             CreatedDate = DateTime.Now,
             UpdatedDate = DateTime.Now
         };
