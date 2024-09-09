@@ -1,12 +1,24 @@
 ﻿using Microsoft.AspNetCore.Http.Features;
+using OracaoApp.Utils.Attributes;
 using System.Reflection;
-using System.Text.Json.Serialization;
 
 namespace OracaoApp.API.Extensions;
 
 public static class AppBuilderExtensions
 {
     private static List<Type>? GetClassesWithAttributes<T>(Assembly assembly) where T : Attribute => assembly.GetTypes().Where(type => type.GetCustomAttribute(typeof(T)) != null).ToList();
+
+    private static void AddCustomServicesForAssembly(this WebApplicationBuilder builder, Assembly assembly)
+    {
+        var scopedServices = GetClassesWithAttributes<ScopedServiceAttribute>(assembly);
+        scopedServices?.ForEach(s => builder.Services.AddScoped(s));
+
+        var transcientServices = GetClassesWithAttributes<TranscientServiceAttribute>(assembly);
+        transcientServices?.ForEach(s => builder.Services.AddTransient(s));
+
+        var singletonServices = GetClassesWithAttributes<SingletonServiceAttribute>(assembly);
+        singletonServices?.ForEach(s => builder.Services.AddSingleton(s));
+    }
 
     private static WebApplicationBuilder AddCustomCors(this WebApplicationBuilder builder)
     {
@@ -50,6 +62,21 @@ public static class AppBuilderExtensions
         return builder;
     }
 
+    private static WebApplicationBuilder AddScopedServices(this WebApplicationBuilder builder)
+    {
+
+        var apiAssembly = Assembly.Load("OracaoApp.API") ?? throw new ApplicationException("Assembly OracaoApp.API not found");
+        builder.AddCustomServicesForAssembly(apiAssembly);
+
+        var dataAssembly = Assembly.Load("OracaoApp.Data") ?? throw new ApplicationException("Assembly OracaoApp.Data not found");
+        builder.AddCustomServicesForAssembly(dataAssembly);
+
+        var utilsAssembly = Assembly.Load("OracaoApp.Utils") ?? throw new ApplicationException("Assembly OracaoApp.SRC.Utils not found");
+        builder.AddCustomServicesForAssembly(utilsAssembly);
+
+        return builder;
+    }
+
     public static WebApplicationBuilder AddCustomServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddSwaggerGen();
@@ -63,7 +90,8 @@ public static class AppBuilderExtensions
             .AddCustomCors()
             .AddCustomDbContext()
             //.AddCustomOpenApi()
-            .AddCustomAuthentication();
+            .AddCustomAuthentication()
+            .AddScopedServices();
     }
 
 

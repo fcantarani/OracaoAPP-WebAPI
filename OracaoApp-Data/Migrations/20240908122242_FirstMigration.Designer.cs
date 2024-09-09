@@ -12,8 +12,8 @@ using OracaoApp.Data;
 namespace OracaoApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240907115813_Initial-Migration")]
-    partial class InitialMigration
+    [Migration("20240908122242_FirstMigration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
