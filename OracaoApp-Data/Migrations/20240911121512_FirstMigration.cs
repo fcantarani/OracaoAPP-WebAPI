@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -36,7 +35,7 @@ namespace OracaoApp.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
-                    Owner = table.Column<string>(type: "text", nullable: false),
+                    OwnerId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
@@ -55,7 +54,7 @@ namespace OracaoApp.Data.Migrations
                     Description = table.Column<string>(type: "text", nullable: false),
                     PrayingForName = table.Column<string>(type: "text", nullable: false),
                     IsPublic = table.Column<bool>(type: "boolean", nullable: false),
-                    Owner = table.Column<string>(type: "text", nullable: false),
+                    OwnerId = table.Column<Guid>(type: "uuid", nullable: false),
                     PrayerCategoryId = table.Column<int>(type: "integer", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
@@ -79,7 +78,7 @@ namespace OracaoApp.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     TestimonyId = table.Column<int>(type: "integer", nullable: false),
                     Message = table.Column<string>(type: "text", nullable: false),
-                    Owner = table.Column<string>(type: "text", nullable: false),
+                    OwnerId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
@@ -102,7 +101,7 @@ namespace OracaoApp.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PrayerId = table.Column<int>(type: "integer", nullable: false),
                     Message = table.Column<string>(type: "text", nullable: false),
-                    Owner = table.Column<string>(type: "text", nullable: false),
+                    OwnerId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },

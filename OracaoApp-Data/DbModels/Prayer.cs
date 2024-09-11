@@ -13,7 +13,7 @@ public class Prayer
     public required string Description { get; set; }
     public required string PrayingForName { get; set; }
     public required bool IsPublic { get; set; }
-    public required string Owner { get; set; }
+    public required Guid OwnerId { get; set; }
 
     [ForeignKey(nameof(PrayerCategory))]
     public required int PrayerCategoryId { get; set; }

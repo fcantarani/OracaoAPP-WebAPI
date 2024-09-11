@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OracaoApp.API.Services;
 
 namespace OracaoApp.API.Controllers;
 
 [Route("v1/[controller]")]
 [ApiController]
-public class TestimonyController(ApplicationDbContext context) : ControllerBase
+public class TestimonyController(AuthService authService, ApplicationDbContext context) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Testimony>>> GetTestimonies()
@@ -50,7 +51,7 @@ public class TestimonyController(ApplicationDbContext context) : ControllerBase
         {
             Title = model.Title,
             Description = model.Description,
-            Owner = "Fabio C.",
+            OwnerId = authService.UserId,
             CreatedDate = DateTime.Now,
             UpdatedDate = DateTime.Now
         };

@@ -61,7 +61,7 @@ public class PrayerController(AuthService authService, ApplicationDbContext cont
             Description = model.Description,
             PrayingForName = model.PrayingForName,
             IsPublic = model.IsPublic,
-            Owner = authService.Username,
+            OwnerId = authService.UserId,
             PrayerCategoryId = model.PrayerCategoryId,
             CreatedDate = DateTime.Now,
             UpdatedDate = DateTime.Now

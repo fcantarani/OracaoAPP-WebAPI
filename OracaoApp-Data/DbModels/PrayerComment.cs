@@ -12,7 +12,7 @@ public class PrayerComment
     public required int PrayerId { get; set; }
 
     public required string Message { get; set; }
-    public required string Owner { get; set; }
+    public required Guid OwnerId { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
 }

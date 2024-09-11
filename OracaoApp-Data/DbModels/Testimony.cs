@@ -11,7 +11,7 @@ public class Testimony
     public int Id { get; set; }
     public required string Title { get; set; }
     public required string Description { get; set; }
-    public required string Owner { get; set; }
+    public required Guid OwnerId { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public List<TestimonyComment>? TestimonyComments { get; set; }

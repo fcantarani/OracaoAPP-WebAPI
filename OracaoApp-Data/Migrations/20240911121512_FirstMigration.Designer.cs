@@ -12,7 +12,7 @@ using OracaoApp.Data;
 namespace OracaoApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240908122242_FirstMigration")]
+    [Migration("20240911121512_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -43,9 +43,8 @@ namespace OracaoApp.Data.Migrations
                     b.Property<bool>("IsPublic")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Owner")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<Guid>("OwnerId")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("PrayerCategoryId")
                         .HasColumnType("integer");
@@ -110,9 +109,8 @@ namespace OracaoApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Owner")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<Guid>("OwnerId")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("PrayerId")
                         .HasColumnType("integer");
@@ -142,9 +140,8 @@ namespace OracaoApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Owner")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<Guid>("OwnerId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -173,9 +170,8 @@ namespace OracaoApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Owner")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<Guid>("OwnerId")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("TestimonyId")
                         .HasColumnType("integer");

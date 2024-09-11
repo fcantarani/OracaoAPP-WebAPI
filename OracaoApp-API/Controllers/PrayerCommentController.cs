@@ -31,7 +31,7 @@ namespace OracaoApp.API.Controllers
             if (prayerComment == null)
                 return NotFound();
 
-            prayerComment.Owner = model.Owner;
+            prayerComment.OwnerId = model.OwnerId;
             prayerComment.Message = model.Message;
             prayerComment.PrayerId = model.PrayerId;
             prayerComment.UpdatedDate = DateTime.Now;
@@ -48,7 +48,7 @@ namespace OracaoApp.API.Controllers
             var prayerComment = new PrayerComment
             {
                 Message = model.Message,
-                Owner = model.Owner,
+                OwnerId = model.OwnerId,
                 PrayerId = model.PrayerId,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.UtcNow,
