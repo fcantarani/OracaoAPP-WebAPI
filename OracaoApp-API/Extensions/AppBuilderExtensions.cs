@@ -89,7 +89,7 @@ public static class AppBuilderExtensions
         return builder
             .AddCustomCors()
             .AddCustomDbContext()
-            //.AddCustomOpenApi()
+            .AddCustomOpenApi()
             .AddCustomAuthentication()
             .AddScopedServices();
     }

@@ -5,28 +5,20 @@ namespace OracaoApp.API.Controllers;
 
 [Route("v1/[controller]")]
 [ApiController]
-public class PrayerController : ControllerBase
+public class PrayerController(AuthService authService, ApplicationDbContext context) : ControllerBase
 {
-    private readonly AuthService _authService;
-    private readonly ApplicationDbContext _context;
-
-    public PrayerController(AuthService authService, ApplicationDbContext context)
-    {
-        _authService = authService;
-        _context = context;
-    }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Prayer>>> GetPrayers()
     {
-        var prayers = await _context.Prayers.Include(x => x.PrayerCategory).Include(x => x.PrayerComments).ToListAsync();
+        var prayers = await context.Prayers.Include(x => x.PrayerCategory).Include(x => x.PrayerComments).ToListAsync();
         return prayers;
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Prayer>> GetPrayer(int id)
     {
-        var prayer = await _context.Prayers.FindAsync(id);
+        var prayer = await context.Prayers.FindAsync(id);
 
         if (prayer == null)
         {
@@ -39,7 +31,7 @@ public class PrayerController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> PutPrayer(int id, PrayerCreateRequest model)
     {
-        var prayer = _context.Prayers.Find(id);
+        var prayer = context.Prayers.Find(id);
 
         if (prayer == null)
             return NotFound();
@@ -51,8 +43,8 @@ public class PrayerController : ControllerBase
         prayer.PrayerCategoryId = model.PrayerCategoryId;
         prayer.UpdatedDate = DateTime.Now;
 
-        _context.Update(prayer);
-        await _context.SaveChangesAsync();
+        context.Update(prayer);
+        await context.SaveChangesAsync();
 
         return NoContent();
     }
@@ -60,7 +52,7 @@ public class PrayerController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Prayer>> PostPrayer(PrayerCreateRequest model)
     {
-        var user = _authService.Username;
+        var user = authService.Username;
 
 
         var prayer = new Prayer
@@ -69,14 +61,14 @@ public class PrayerController : ControllerBase
             Description = model.Description,
             PrayingForName = model.PrayingForName,
             IsPublic = model.IsPublic,
-            Owner = _authService.Username,
+            Owner = authService.Username,
             PrayerCategoryId = model.PrayerCategoryId,
             CreatedDate = DateTime.Now,
             UpdatedDate = DateTime.Now
         };
 
-        _context.Prayers.Add(prayer);
-        await _context.SaveChangesAsync();
+        context.Prayers.Add(prayer);
+        await context.SaveChangesAsync();
 
         return CreatedAtAction("GetPrayer", new { id = prayer.Id }, prayer);
     }
@@ -84,18 +76,18 @@ public class PrayerController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePrayer(int id)
     {
-        var prayer = await _context.Prayers.FindAsync(id);
+        var prayer = await context.Prayers.FindAsync(id);
         if (prayer == null)
             return NotFound();
 
-        _context.Prayers.Remove(prayer);
-        await _context.SaveChangesAsync();
+        context.Prayers.Remove(prayer);
+        await context.SaveChangesAsync();
 
         return NoContent();
     }
 
     private bool PrayerExists(int id)
     {
-        return _context.Prayers.Any(e => e.Id == id);
+        return context.Prayers.Any(e => e.Id == id);
     }
 }
