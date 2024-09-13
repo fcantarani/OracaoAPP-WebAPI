@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -25,6 +26,22 @@ namespace OracaoApp.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PrayerCategories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PrayingFors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    OwnerId = table.Column<Guid>(type: "uuid", nullable: false),
+                    PrayerId = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PrayingFors", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,10 +133,39 @@ namespace OracaoApp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PrayerPrayingFor",
+                columns: table => new
+                {
+                    PrayersId = table.Column<int>(type: "integer", nullable: false),
+                    PrayingForsId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PrayerPrayingFor", x => new { x.PrayersId, x.PrayingForsId });
+                    table.ForeignKey(
+                        name: "FK_PrayerPrayingFor_Prayers_PrayersId",
+                        column: x => x.PrayersId,
+                        principalTable: "Prayers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PrayerPrayingFor_PrayingFors_PrayingForsId",
+                        column: x => x.PrayingForsId,
+                        principalTable: "PrayingFors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_PrayerComments_PrayerId",
                 table: "PrayerComments",
                 column: "PrayerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PrayerPrayingFor_PrayingForsId",
+                table: "PrayerPrayingFor",
+                column: "PrayingForsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Prayers_PrayerCategoryId",
@@ -139,10 +185,16 @@ namespace OracaoApp.Data.Migrations
                 name: "PrayerComments");
 
             migrationBuilder.DropTable(
+                name: "PrayerPrayingFor");
+
+            migrationBuilder.DropTable(
                 name: "TestimonyComments");
 
             migrationBuilder.DropTable(
                 name: "Prayers");
+
+            migrationBuilder.DropTable(
+                name: "PrayingFors");
 
             migrationBuilder.DropTable(
                 name: "Testimonies");

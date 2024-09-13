@@ -8,6 +8,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<Prayer> Prayers { get; set; }
     public DbSet<PrayerCategory> PrayerCategories { get; set; }
     public DbSet<PrayerComment> PrayerComments { get; set; }
+    public DbSet<PrayingFor> PrayingFors { get; set; }
     public DbSet<Testimony> Testimonies { get; set; }
     public DbSet<TestimonyComment> TestimonyComments { get; set; }
 

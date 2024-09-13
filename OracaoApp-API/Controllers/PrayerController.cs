@@ -11,7 +11,7 @@ public class PrayerController(AuthService authService, ApplicationDbContext cont
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Prayer>>> GetPrayers()
     {
-        var prayers = await context.Prayers.Include(x => x.PrayerCategory).Include(x => x.PrayerComments).ToListAsync();
+        var prayers = await context.Prayers.Include(x => x.PrayerCategory).Include(x => x.PrayerComments).Include(x => x.PrayingFors).ToListAsync();
         return prayers;
     }
 
@@ -21,12 +21,35 @@ public class PrayerController(AuthService authService, ApplicationDbContext cont
         var prayer = await context.Prayers.FindAsync(id);
 
         if (prayer == null)
-        {
             return NotFound();
-        }
 
         return prayer;
     }
+
+    [HttpGet("User/{userId}")]
+    public async Task<ActionResult<IEnumerable<Prayer>>> GetPrayersByUserId(Guid userId)
+    {
+        var prayers = await context.Prayers.Include(x => x.PrayerCategory).Include(x => x.PrayerComments).Include(x => x.PrayingFors).Where(x => x.OwnerId == userId).ToListAsync();
+
+        if (prayers == null)
+            return NotFound();
+
+        return prayers;
+    }
+
+    [HttpGet("Category/{id}")]
+    public async Task<ActionResult<IEnumerable<Prayer>>> GetPrayersByCategoryId(int id)
+    {
+        var prayers = id != 0 ? await context.Prayers.Include(x => x.PrayerCategory).Include(x => x.PrayerComments).Include(x => x.PrayingFors).Where(x => x.PrayerCategoryId == id).ToListAsync()
+            : await context.Prayers.Include(x => x.PrayerCategory).Include(x => x.PrayerComments).Include(x => x.PrayingFors).ToListAsync()
+            ;
+
+        if (prayers == null)
+            return NotFound();
+
+        return prayers;
+    }
+
 
     [HttpPut("{id}")]
     public async Task<IActionResult> PutPrayer(int id, PrayerCreateRequest model)
@@ -52,8 +75,6 @@ public class PrayerController(AuthService authService, ApplicationDbContext cont
     [HttpPost]
     public async Task<ActionResult<Prayer>> PostPrayer(PrayerCreateRequest model)
     {
-        var user = authService.Username;
-
 
         var prayer = new Prayer
         {
@@ -73,7 +94,7 @@ public class PrayerController(AuthService authService, ApplicationDbContext cont
         return CreatedAtAction("GetPrayer", new { id = prayer.Id }, prayer);
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("Delete/{id}")]
     public async Task<IActionResult> DeletePrayer(int id)
     {
         var prayer = await context.Prayers.FindAsync(id);

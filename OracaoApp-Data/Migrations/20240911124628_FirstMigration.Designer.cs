@@ -12,7 +12,7 @@ using OracaoApp.Data;
 namespace OracaoApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240911121512_FirstMigration")]
+    [Migration("20240911124628_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -125,6 +125,31 @@ namespace OracaoApp.Data.Migrations
                     b.ToTable("PrayerComments");
                 });
 
+            modelBuilder.Entity("OracaoApp.Data.DbModels.PrayingFor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid>("OwnerId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("PrayerId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PrayingFors");
+                });
+
             modelBuilder.Entity("OracaoApp.Data.DbModels.Testimony", b =>
                 {
                     b.Property<int>("Id")
@@ -186,6 +211,21 @@ namespace OracaoApp.Data.Migrations
                     b.ToTable("TestimonyComments");
                 });
 
+            modelBuilder.Entity("PrayerPrayingFor", b =>
+                {
+                    b.Property<int>("PrayersId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PrayingForsId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("PrayersId", "PrayingForsId");
+
+                    b.HasIndex("PrayingForsId");
+
+                    b.ToTable("PrayerPrayingFor");
+                });
+
             modelBuilder.Entity("OracaoApp.Data.DbModels.Prayer", b =>
                 {
                     b.HasOne("OracaoApp.Data.DbModels.PrayerCategory", "PrayerCategory")
@@ -211,6 +251,21 @@ namespace OracaoApp.Data.Migrations
                     b.HasOne("OracaoApp.Data.DbModels.Testimony", null)
                         .WithMany("TestimonyComments")
                         .HasForeignKey("TestimonyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PrayerPrayingFor", b =>
+                {
+                    b.HasOne("OracaoApp.Data.DbModels.Prayer", null)
+                        .WithMany()
+                        .HasForeignKey("PrayersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OracaoApp.Data.DbModels.PrayingFor", null)
+                        .WithMany()
+                        .HasForeignKey("PrayingForsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

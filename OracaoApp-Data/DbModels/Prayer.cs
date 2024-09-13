@@ -24,6 +24,9 @@ public class Prayer
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public virtual List<PrayerComment>? PrayerComments { get; set; }
 
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public virtual List<PrayingFor>? PrayingFors { get; set; }
+
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
 }
